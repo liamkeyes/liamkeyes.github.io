@@ -1,6 +1,6 @@
 ---
 title: "Starwars"
-author: "Your Name"
+author: "Liam Keyes"
 date: "2023-10-30"
 categories: [starwars, code, analysis]
 image: "image.png"

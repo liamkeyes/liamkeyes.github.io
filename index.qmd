@@ -15,13 +15,13 @@ about:
       href: https://instagram.com
     - icon: github
       text: GitHub
-      href: https://github.com
+      href: https://github.com/liamkeyes
     - icon: file-earmark-pdf
       text: Resumé
-      href: https://GITHUB_USERNAME.github.io/resume-example.pdf
+      href: https://liamkeyes.github.io/resume-example.pdf
     - icon: mailbox
       text: Email
-      href: mailto:YOUR_EMAIL@geneseo.edu
+      href: mailto:lpk4@geneseo.edu
 
 ---
 
@@ -36,5 +36,17 @@ B.S. in Marketing | Aug 2023 - May 2027 <br>
 ## Experience
 
 | Data Analyst 
+```{r}
+```
+
+
+```{r}
+```
+
+
+```{r}
+```
+
+
 
 

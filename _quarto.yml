@@ -25,3 +25,6 @@ format:
     toc: false
     include-after-body: target_blank.html
     
+    
+# preview the website in the current directory
+quarto preview
