@@ -9,13 +9,13 @@ about:
   links:
     - icon: linkedin
       text: LinkedIn
-      href: https://linkedin.com
+      href: https://www.linkedin.com/in/liam-keyes-12994a2a3/
     - icon: instagram
       text: Instagram
-      href: https://instagram.com
+      href: https://www.instagram.com/liamkeyes_/
     - icon: github
       text: GitHub
-      href: https://github.com/liamkeyes
+      href: liamkeyes.github.io/
     - icon: file-earmark-pdf
       text: Resumé
       href: https://liamkeyes.github.io/resume-example.pdf
@@ -35,17 +35,7 @@ B.S. in Marketing | Aug 2023 - May 2027 <br>
 
 ## Experience
 
-| Data Analyst 
-```{r}
-```
-
-
-```{r}
-```
-
-
-```{r}
-```
+| Data Analysts
 
 
 
