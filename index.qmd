@@ -1,8 +1,8 @@
 ---
-title: "Liam Keyes" 
+title: "Liam Keyes"
 about:
-  template: trestles  # jolla  trestles  solana  marquee  broadside
-  image: img/profile.png
+  template: trestles 
+  image: IMG_5250.jpeg
   image-width: 15em
   image-shape: round # rectangle  round  rounded
   
@@ -17,10 +17,10 @@ about:
       text: GitHub
       href: liamkeyes.github.io/
     - icon: file-earmark-pdf
-      text: Resumé
+      text: resume.pdf
       href: https://liamkeyes.github.io/resume-example.pdf
     - icon: mailbox
-      text: Email
+      text: lpk4@geneseo.edu
       href: mailto:lpk4@geneseo.edu
 
 ---
