@@ -1,12 +1,13 @@
 ---
-title: DANL Project
-subtitle: "Data-Driven Mastery: Unlocking Business Potential"
+title: Group Project
+subtitle: "College Basketball Statistics"
 author: 
-  - Name 1
-  - Name 2
-  - Name 3
-  - Name 4
-  - Name 5
+  - Samuel Lee
+  - Mike Conklin
+  - Anderson Wise
+  - Mathew Brown
+  - Neil Downey
+  - Liam Keyes
 
 toc: true
 toc-title: "Table of Contents"
@@ -22,6 +23,8 @@ execute:
 
 from: markdown+emoji
 ---
+
+![](group.png)
 ```{r setup}
 #| include: false
 library(tidyverse)
@@ -41,52 +44,114 @@ theme_set(theme_ipsum()+
                                margin = margin(0,10,0,0))
                 )
           )
+
+file_path <- 'cbb.csv'
+college_bball <- read.csv(file_path)
+
 ```
 
 
 
 # Introduction
 
-About this project :clap:
-
-```{r}
-1 + 1
-```
+The data frame `college_bball` contains a subset of college basketball data that is available online via <https://www.kaggle.com/datasets/andrewsundberg/college-basketball-dataset> It contains a wide variety of division 1 college basketball team statistics from 2013 to 2023
 
 
 # Data
-
-The data.frame `mpg` contains a subset of the fuel economy data that the EPA makes available on [https://fueleconomy.gov/](https://fueleconomy.gov/). It contains only models which had a new release every year between 1999 and 2008 - this was used as a proxy for the popularity of the car. :oncoming_automobile:
 
 
 ## Summary Statistics
 
 ```{r}
-mpg <- ggplot2::mpg
-```
 
-```{r}
-#| results: asis
-#| echo: false
-rmarkdown::paged_table(mpg) 
+rmarkdown::paged_table(college_bball) 
+
 ```
 
 
 ```{r}
-skim(mpg) %>% 
+skim(college_bball) %>% 
   select(-n_missing)
 ```
 
 
-## MPG and a Type of Cars
-The following boxplot shows how the distribution of highway MPG (`hwy`) varies by a type of cars (`class`) :blue_car: :truck: :minibus:.
+## Visualization
 
 
+### Field Goal Percentages Part 1
+
+What 5 teams have the highest field goal percentages `EFG_O`?
 ```{r}
-ggplot(data = mpg) +
-  geom_boxplot(aes(x = class, y = hwy, fill = class),
-               show.legend = F) +
-  labs(x = "Class", y = "Highway\nMPG") 
+library(dplyr)
+top_5_teams <- college_bball %>%
+  arrange(desc(EFG_O)) %>%
+  head(5)
+specific_teams1 <- c("Gonzaga", "UCLA", "Villanova", "William & Mary", "South Dakota St.")
+top_5_data <- subset(college_bball, TEAM %in% specific_teams1)
+
+ggplot(data = top_5_data) +
+  geom_boxplot(mapping = aes(x = TEAM, y = EFG_O))
 ```
+Gonzaga shows the highest average field goal percentage among division 1 college basketball teams
 
 
+
+### Field Goal Percentages Part 2
+
+What 5 teams have the lowest field goal percentages `EFG_O`?
+```{r}
+library(dplyr)
+bottom_5_teams <- college_bball %>%
+  arrange(EFG_O) %>%
+  head(5)
+specific_teams2 <- c("Howard", "Grambling St.", "Northern Illinois", "Maryland Eastern Shore", "Delaware St.")
+bottom_5_data <- subset(college_bball, TEAM %in% specific_teams2)
+
+ggplot(data = bottom_5_data) +
+  geom_boxplot(mapping = aes(x = TEAM, y = EFG_O))
+```
+Maryland Eastern Shore shows the lowest average field goal percentages among division 1 college basketball teams
+
+
+### Turnovers
+
+What 5 teams have the highest turnover percentages `TOR`?
+```{r}
+library(dplyr)
+top_5 <- college_bball %>%
+  arrange(desc(TOR)) %>%
+  head(5)
+specific_teams3 <- c("Savannah St.", "Grambling St.", "IUPUI", "Arkansas Pine Bluff", "Manhattan")
+top_5 <- subset(college_bball, TEAM %in% specific_teams3)
+
+ggplot(data = top_5) +
+  geom_boxplot(mapping = aes(x = TEAM, y = TOR))
+```
+Arkansas Pine Bluff shows the highest average turnover percentages among division 1 college basketball teams 
+
+### Power Ratings
+
+What 5 teams have the highest chances of beating an average division 1 team `BARTHAG`?
+```{r}
+library(dplyr)
+top_5_power <- college_bball %>%
+  arrange(desc(BARTHAG)) %>%
+  head(5)
+specific_teams4 <- c("Kentucky", "Gonzaga", "Duke", "Wisconsin", "Louisville")
+top_5_power <- subset(college_bball, TEAM %in% specific_teams4)
+
+ggplot(data = top_5_power) +
+  geom_boxplot(mapping = aes(x = TEAM, y = BARTHAG))
+```
+Gonzaga shows the highest chances of beating an average division 1 college basketball team among all division 1 college basketball teams
+
+
+### Field Goal Percentage vs Winning
+
+What is the relationship between field goal percentage `EFG_O` and the number of games won `W`?
+```{r}
+library(ggplot2)
+ggplot(data = college_bball) +
+  geom_point(mapping = aes(x = EFG_O, y = W))
+```
+There is a positive relationship between field goal percentage and number of games won. So, as a team increases their field goal percentage, they will most likely win more games
