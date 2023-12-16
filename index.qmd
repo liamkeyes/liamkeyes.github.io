@@ -1,5 +1,5 @@
 ---
-title: "Liiam Keyes"
+title: "Liam Keyes"
 about:
   template: trestles  # jolla  trestles  solana  marquee  broadside
   image: IMG_5250.jpeg
@@ -9,7 +9,7 @@ about:
   links:
     - icon: linkedin
       text: LinkedIn
-      href: https://linkedin.com
+      href: https://www.linkedin.com/in/liam-keyes-12994a2a3/
     - icon: instagram
       text: Instagram
       href: https://instagram.com
@@ -26,16 +26,16 @@ about:
 ---
 
 
-Finley Malloc majors in Data Analytics at SUNY Geneseo. When not working on data analytics, Finley enjoys spending time unicycling and playing with her pet iguana.
+Student at SUNY Geneseo, majoring in makreting.
 
 ## Education
 
 State University of New York at Geneseo | Geneseo, NY <br>
-B.S. in Data Analytics | Aug 2022 - May 2026 <br>
-Minor in Business Administration 
+B.S. in Marketing | Aug 2023 - May 2027 <br>
+ 
 
 ## Experience
 
-Starbucks Analytics | Data Analyst Intern | May 2024 - Aug 2024
+Data Analyst 
 
 
