@@ -1,5 +1,61 @@
 [
   {
+    "objectID": "project.html#summary-statistics",
+    "href": "project.html#summary-statistics",
+    "title": "Group Project",
+    "section": "2.1 Summary Statistics",
+    "text": "2.1 Summary Statistics\n\nrmarkdown::paged_table(college_bball) \n\n\n\n  \n\n\n\n\nskim(college_bball) %&gt;% \n  select(-n_missing)\n\n\nData summary\n\n\nName\ncollege_bball\n\n\nNumber of rows\n3523\n\n\nNumber of columns\n24\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\ncharacter\n4\n\n\nnumeric\n20\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: character\n\n\n\nskim_variable\ncomplete_rate\nmin\nmax\nempty\nn_unique\nwhitespace\n\n\n\n\nTEAM\n1.00\n3\n22\n0\n368\n0\n\n\nCONF\n1.00\n2\n4\n0\n35\n0\n\n\nPOSTSEASON\n0.44\n2\n9\n0\n9\n0\n\n\nSEED\n0.36\n1\n3\n0\n17\n0\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\nG\n1\n30.49\n3.95\n5.0\n29.00\n31.00\n33.00\n40.00\n▁▁▁▇▂\n\n\nW\n1\n15.99\n6.57\n0.0\n11.00\n16.00\n21.00\n38.00\n▂▇▇▃▁\n\n\nADJOE\n1\n103.15\n7.26\n76.6\n98.20\n102.80\n107.90\n129.10\n▁▃▇▃▁\n\n\nADJDE\n1\n103.15\n6.51\n84.0\n98.40\n103.20\n107.80\n124.00\n▁▅▇▃▁\n\n\nBARTHAG\n1\n0.49\n0.26\n0.0\n0.28\n0.48\n0.71\n0.98\n▅▇▇▆▆\n\n\nEFG_O\n1\n49.89\n3.08\n39.2\n47.90\n49.80\n51.90\n61.00\n▁▃▇▃▁\n\n\nEFG_D\n1\n50.09\n2.89\n39.6\n48.10\n50.10\n52.00\n60.10\n▁▃▇▃▁\n\n\nTOR\n1\n18.70\n2.10\n11.9\n17.30\n18.60\n20.00\n27.10\n▁▆▇▂▁\n\n\nTORD\n1\n18.63\n2.24\n10.2\n17.10\n18.50\n20.10\n28.50\n▁▅▇▂▁\n\n\nORB\n1\n29.31\n4.21\n14.4\n26.50\n29.40\n32.10\n43.60\n▁▃▇▃▁\n\n\nDRB\n1\n29.52\n3.23\n18.4\n27.30\n29.50\n31.70\n40.40\n▁▃▇▃▁\n\n\nFTR\n1\n34.53\n5.51\n19.6\n30.60\n34.30\n38.10\n58.60\n▂▇▆▁▁\n\n\nFTRD\n1\n34.80\n6.40\n16.5\n30.20\n34.10\n38.80\n60.70\n▁▇▇▂▁\n\n\nX2P_O\n1\n49.11\n3.40\n37.7\n46.80\n49.00\n51.30\n64.00\n▁▆▇▂▁\n\n\nX2P_D\n1\n49.29\n3.32\n37.7\n47.10\n49.30\n51.50\n61.20\n▁▃▇▃▁\n\n\nX3P_O\n1\n34.19\n2.73\n24.9\n32.30\n34.10\n36.00\n44.10\n▁▃▇▃▁\n\n\nX3P_D\n1\n34.37\n2.44\n26.1\n32.70\n34.30\n36.00\n43.10\n▁▃▇▃▁\n\n\nADJ_T\n1\n67.74\n3.09\n57.2\n65.70\n67.70\n69.70\n83.40\n▁▇▇▁▁\n\n\nWAB\n1\n-7.58\n6.82\n-25.2\n-12.60\n-7.90\n-3.00\n13.10\n▁▇▇▃▁\n\n\nYEAR\n1\n2017.83\n3.26\n2013.0\n2015.00\n2018.00\n2021.00\n2023.00\n▇▆▆▂▆"
+  },
+  {
+    "objectID": "project.html#visualization",
+    "href": "project.html#visualization",
+    "title": "Group Project",
+    "section": "2.2 Visualization",
+    "text": "2.2 Visualization\n\n2.2.1 Field Goal Percentages Part 1\nWhat 5 teams have the highest field goal percentages EFG_O?\n\nlibrary(dplyr)\ntop_5_teams &lt;- college_bball %&gt;%\n  arrange(desc(EFG_O)) %&gt;%\n  head(5)\nspecific_teams1 &lt;- c(\"Gonzaga\", \"UCLA\", \"Villanova\", \"William & Mary\", \"South Dakota St.\")\ntop_5_data &lt;- subset(college_bball, TEAM %in% specific_teams1)\n\nggplot(data = top_5_data) +\n  geom_boxplot(mapping = aes(x = TEAM, y = EFG_O))\n\n\n\n\nGonzaga shows the highest average field goal percentage among division 1 college basketball teams\n\n\n2.2.2 Field Goal Percentages Part 2\nWhat 5 teams have the lowest field goal percentages EFG_O?\n\nlibrary(dplyr)\nbottom_5_teams &lt;- college_bball %&gt;%\n  arrange(EFG_O) %&gt;%\n  head(5)\nspecific_teams2 &lt;- c(\"Howard\", \"Grambling St.\", \"Northern Illinois\", \"Maryland Eastern Shore\", \"Delaware St.\")\nbottom_5_data &lt;- subset(college_bball, TEAM %in% specific_teams2)\n\nggplot(data = bottom_5_data) +\n  geom_boxplot(mapping = aes(x = TEAM, y = EFG_O))\n\n\n\n\nMaryland Eastern Shore shows the lowest average field goal percentages among division 1 college basketball teams\n\n\n2.2.3 Turnovers\nWhat 5 teams have the highest turnover percentages TOR?\n\nlibrary(dplyr)\ntop_5 &lt;- college_bball %&gt;%\n  arrange(desc(TOR)) %&gt;%\n  head(5)\nspecific_teams3 &lt;- c(\"Savannah St.\", \"Grambling St.\", \"IUPUI\", \"Arkansas Pine Bluff\", \"Manhattan\")\ntop_5 &lt;- subset(college_bball, TEAM %in% specific_teams3)\n\nggplot(data = top_5) +\n  geom_boxplot(mapping = aes(x = TEAM, y = TOR))\n\n\n\n\nArkansas Pine Bluff shows the highest average turnover percentages among division 1 college basketball teams\n\n\n2.2.4 Power Ratings\nWhat 5 teams have the highest chances of beating an average division 1 team BARTHAG?\n\nlibrary(dplyr)\ntop_5_power &lt;- college_bball %&gt;%\n  arrange(desc(BARTHAG)) %&gt;%\n  head(5)\nspecific_teams4 &lt;- c(\"Kentucky\", \"Gonzaga\", \"Duke\", \"Wisconsin\", \"Louisville\")\ntop_5_power &lt;- subset(college_bball, TEAM %in% specific_teams4)\n\nggplot(data = top_5_power) +\n  geom_boxplot(mapping = aes(x = TEAM, y = BARTHAG))\n\n\n\n\nGonzaga shows the highest chances of beating an average division 1 college basketball team among all division 1 college basketball teams\n\n\n2.2.5 Field Goal Percentage vs Winning\nWhat is the relationship between field goal percentage EFG_O and the number of games won W?\n\nlibrary(ggplot2)\nggplot(data = college_bball) +\n  geom_point(mapping = aes(x = EFG_O, y = W))\n\n\n\n\nThere is a positive relationship between field goal percentage and number of games won. So, as a team increases their field goal percentage, they will most likely win more games"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Liiam Keyes",
+    "section": "",
+    "text": "Finley Malloc majors in Data Analytics at SUNY Geneseo. When not working on data analytics, Finley enjoys spending time unicycling and playing with her pet iguana."
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Liiam Keyes",
+    "section": "Education",
+    "text": "Education\nState University of New York at Geneseo | Geneseo, NY  B.S. in Data Analytics | Aug 2022 - May 2026  Minor in Business Administration"
+  },
+  {
+    "objectID": "index.html#experience",
+    "href": "index.html#experience",
+    "title": "Liiam Keyes",
+    "section": "Experience",
+    "text": "Experience\nStarbucks Analytics | Data Analyst Intern | May 2024 - Aug 2024"
+  },
+  {
+    "objectID": "posts/starwars/starwars_df.html",
+    "href": "posts/starwars/starwars_df.html",
+    "title": "Starwars",
+    "section": "",
+    "text": "Let’s analyze the starwars data:\nstarwars &lt;- read_csv(\"https://bcdanl.github.io/data/starwars.csv\")"
+  },
+  {
+    "objectID": "posts/starwars/starwars_df.html#variable-description-for-starwars-data.frame",
+    "href": "posts/starwars/starwars_df.html#variable-description-for-starwars-data.frame",
+    "title": "Starwars",
+    "section": "Variable Description for starwars data.frame",
+    "text": "Variable Description for starwars data.frame\nThe following describes the variables in the starwars data.frame.\n\nfilms List of films the character appeared in\nname Name of the character\nspecies Name of species\nheight Height (cm)\nmass Weight (kg)\nhair_color, skin_color, eye_color Hair, skin, and eye colors\nbirth_year Year born (BBY = Before Battle of Yavin)\nsex The biological sex of the character, namely male, female, hermaphroditic, or none (as in the case for Droids).\ngender The gender role or gender identity of the character as determined by their personality or the way they were programmed (as in the case for Droids).\nhomeworld Name of homeworld"
+  },
+  {
+    "objectID": "posts/starwars/starwars_df.html#human-vs.-droid",
+    "href": "posts/starwars/starwars_df.html#human-vs.-droid",
+    "title": "Starwars",
+    "section": "Human vs. Droid",
+    "text": "Human vs. Droid\n\nggplot(data = \n         starwars %&gt;% \n         filter(species %in% c(\"Human\", \"Droid\"))) +\n  geom_boxplot(aes(x = species, y = mass, \n                   fill = species),\n               show.legend = FALSE)"
+  },
+  {
     "objectID": "posts/post-with-code/index.html",
     "href": "posts/post-with-code/index.html",
     "title": "Post With Code",
@@ -14,32 +70,11 @@
     "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
   },
   {
-    "objectID": "posts/starwars/starwars_df.html",
-    "href": "posts/starwars/starwars_df.html",
-    "title": "Starwars",
-    "section": "",
-    "text": "Let’s analyze the starwars data:"
-  },
-  {
-    "objectID": "posts/starwars/starwars_df.html#variable-description-for-starwars-data.frame",
-    "href": "posts/starwars/starwars_df.html#variable-description-for-starwars-data.frame",
-    "title": "Starwars",
-    "section": "Variable Description for starwars data.frame",
-    "text": "Variable Description for starwars data.frame\nThe following describes the variables in the starwars data.frame.\n\nfilms List of films the character appeared in\nname Name of the character\nspecies Name of species\nheight Height (cm)\nmass Weight (kg)\nhair_color, skin_color, eye_color Hair, skin, and eye colors\nbirth_year Year born (BBY = Before Battle of Yavin)\nsex The biological sex of the character, namely male, female, hermaphroditic, or none (as in the case for Droids).\ngender The gender role or gender identity of the character as determined by their personality or the way they were programmed (as in the case for Droids).\nhomeworld Name of homeworld"
-  },
-  {
-    "objectID": "posts/starwars/starwars_df.html#human-vs.-droid",
-    "href": "posts/starwars/starwars_df.html#human-vs.-droid",
-    "title": "Starwars",
-    "section": "Human vs. Droid",
-    "text": "Human vs. Droid\n\nggplot(data = \n         starwars %>% \n         filter(species %in% c(\"Human\", \"Droid\"))) +\n  geom_boxplot(aes(x = species, y = mass, \n                   fill = species),\n               show.legend = FALSE)"
-  },
-  {
     "objectID": "posts/beer-markets/beer-markets.html",
     "href": "posts/beer-markets/beer-markets.html",
     "title": "Beer Markets",
     "section": "",
-    "text": "Let’s analyze the beer_data data:"
+    "text": "Let’s analyze the beer_data data:\nbeer_data &lt;- read_csv(\"https://bcdanl.github.io/data/beer_markets.csv\")"
   },
   {
     "objectID": "posts/beer-markets/beer-markets.html#variable-description-for-beer_data-data.frame",
@@ -77,52 +112,10 @@
     "text": "Promotional Impact\nWe’ll assess the impact of promotions on the quantity of beer purchased. For this analysis, we can calculate the average quantity purchased with and without promotions and visualize the difference. We’ll do this for each brand to see which brands are most affected by promotions.\nLet’s begin this analysis by looking at the average quantity purchased with and without promotions for each brand.\n\n# Calculate average quantity purchased with and without promotions for each brand\npromo_impact = beer_data.groupby(['brand', 'promo']).agg({'quantity':'mean'}).reset_index()\n\n# Pivot the data to have promo and non-promo side by side for each brand\npromo_impact_pivot = promo_impact.pivot(index='brand', columns='promo', values='quantity').reset_index()\npromo_impact_pivot.columns = ['brand', 'non_promo', 'promo']\n\n# Calculate the difference in average quantity purchased between promo and non-promo\npromo_impact_pivot['promo_impact'] = promo_impact_pivot['promo'] - promo_impact_pivot['non_promo']\n\n# Sort by the impact of promo\npromo_impact_pivot_sorted = promo_impact_pivot.sort_values('promo_impact', ascending=False)\n\n# Plotting the difference in average quantity purchased between promo and non-promo for each brand\nplt.figure(figsize=(12, 10))\nsns.barplot(x='promo_impact', y='brand', data=promo_impact_pivot_sorted, palette='viridis')\nplt.title('Impact of Promotions on Average Quantity Purchased by Brand')\nplt.xlabel('Difference in Average Quantity Purchased (Promo - Non-Promo)')\nplt.ylabel('Brand')\nplt.show()\n\n\n\n\nThe bar chart illustrates the impact of promotions on the average quantity of beer purchased by brand. A positive value indicates that, on average, more beer is purchased when there is a promotion compared to when there isn’t. Some brands appear to be significantly more influenced by promotions, with customers buying more when the products are on sale or promotion.\nThis comprehensive analysis has provided insights into purchase patterns, demographic preferences, price sensitivity, and the impact of promotions on beer purchases."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "YOUR NAME",
-    "section": "",
-    "text": "Finley Malloc majors in Data Analytics at SUNY Geneseo. When not working on data analytics, Finley enjoys spending time unicycling and playing with her pet iguana."
-  },
-  {
-    "objectID": "index.html#education",
-    "href": "index.html#education",
-    "title": "YOUR NAME",
-    "section": "Education",
-    "text": "Education\nState University of New York at Geneseo | Geneseo, NY  B.S. in Data Analytics | Aug 2022 - May 2026  Minor in Business Administration"
-  },
-  {
-    "objectID": "index.html#experience",
-    "href": "index.html#experience",
-    "title": "YOUR NAME",
-    "section": "Experience",
-    "text": "Experience\nStarbucks Analytics | Data Analyst Intern | May 2024 - Aug 2024"
-  },
-  {
     "objectID": "blog-listing.html",
     "href": "blog-listing.html",
     "title": "Insightful Analytics",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nBeer Markets\n\n\n\n\n\n\n\n\n\nNov 2, 2023\n\n\nByeong-Hak Choe\n\n\n8 min\n\n\n\n\n\n\n  \n\n\n\n\nStarwars\n\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nYour Name\n\n\n2 min\n\n\n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nYOUR NAME\n\n\n0 min\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\n\nOct 27, 2023\n\n\nYOUR NAME\n\n\n0 min\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "project.html",
-    "href": "project.html",
-    "title": "DANL Project",
-    "section": "",
-    "text": "About this project 👏\n\n1 + 1\n\n[1] 2"
-  },
-  {
-    "objectID": "project.html#summary-statistics",
-    "href": "project.html#summary-statistics",
-    "title": "DANL Project",
-    "section": "2.1 Summary Statistics",
-    "text": "2.1 Summary Statistics\n\nmpg <- ggplot2::mpg\n\n\n\n\n  \n\n\n\nskim(mpg) %>% \n  select(-n_missing)\n\n\nData summary\n\n\nName\nmpg\n\n\nNumber of rows\n234\n\n\nNumber of columns\n11\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\ncharacter\n6\n\n\nnumeric\n5\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: character\n\n\n\nskim_variable\ncomplete_rate\nmin\nmax\nempty\nn_unique\nwhitespace\n\n\n\n\nmanufacturer\n1\n4\n10\n0\n15\n0\n\n\nmodel\n1\n2\n22\n0\n38\n0\n\n\ntrans\n1\n8\n10\n0\n10\n0\n\n\ndrv\n1\n1\n1\n0\n3\n0\n\n\nfl\n1\n1\n1\n0\n5\n0\n\n\nclass\n1\n3\n10\n0\n7\n0\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\ndispl\n1\n3.47\n1.29\n1.6\n2.4\n3.3\n4.6\n7\n▇▆▆▃▁\n\n\nyear\n1\n2003.50\n4.51\n1999.0\n1999.0\n2003.5\n2008.0\n2008\n▇▁▁▁▇\n\n\ncyl\n1\n5.89\n1.61\n4.0\n4.0\n6.0\n8.0\n8\n▇▁▇▁▇\n\n\ncty\n1\n16.86\n4.26\n9.0\n14.0\n17.0\n19.0\n35\n▆▇▃▁▁\n\n\nhwy\n1\n23.44\n5.95\n12.0\n18.0\n24.0\n27.0\n44\n▅▅▇▁▁"
-  },
-  {
-    "objectID": "project.html#mpg-and-a-type-of-cars",
-    "href": "project.html#mpg-and-a-type-of-cars",
-    "title": "DANL Project",
-    "section": "2.2 MPG and a Type of Cars",
-    "text": "2.2 MPG and a Type of Cars\nThe following boxplot shows how the distribution of highway MPG (hwy) varies by a type of cars (class) 🚙 🚚 🚐.\n\nggplot(data = mpg) +\n  geom_boxplot(aes(x = class, y = hwy, fill = class),\n               show.legend = F) +\n  labs(x = \"Class\", y = \"Highway\\nMPG\")"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nBeer Markets\n\n\n\n\n\n\n\n\n\nNov 2, 2023\n\n\nByeong-Hak Choe\n\n\n9 min\n\n\n\n\n\n\n  \n\n\n\n\nStarwars\n\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nYour Name\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nYOUR NAME\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\n\nOct 27, 2023\n\n\nYOUR NAME\n\n\n1 min\n\n\n\n\n\n\nNo matching items"
   }
 ]
