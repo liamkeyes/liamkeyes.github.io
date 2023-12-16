@@ -2,7 +2,7 @@
 title: "Liam Keyes"
 about:
   template: trestles  # jolla  trestles  solana  marquee  broadside
-  image: IMG_5250.jpeg
+  image: IMG_6221.jpeg
   image-width: 15em
   image-shape: round # rectangle  round  rounded
   
@@ -12,10 +12,10 @@ about:
       href: https://www.linkedin.com/in/liam-keyes-12994a2a3/
     - icon: instagram
       text: Instagram
-      href: https://instagram.com
+      href: https://www.instagram.com/liamkeyes_/
     - icon: github
       text: GitHub
-      href: https://github.com
+      href: https://github.com/liamkeyes
     - icon: file-earmark-pdf
       text: Resumé
       href: https://liamkeyes.github.io/resume.pdf
